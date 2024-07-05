@@ -180,7 +180,6 @@
 
   environment = {
     systemPackages = with pkgs; [
-      discord
       home-manager
 
       hyprland
@@ -196,6 +195,23 @@
       wayland-protocols
       wayland-utils
       waybar
+      swww
+      meson
+      dunst
+      wl-clipboard
+      tofi
+      grim
+      slurp
+      lxqt.lxqt-openssh-askpass
+
+      discord
+      whatsapp-for-linux
+      steam
+      steam-run
+      bottles
+      lutris
+      firefox
+      spotify
 
       gcc
       dotnet-sdk_8
@@ -211,6 +227,10 @@
       cargo
    ];
 
+   etc = {
+     "profile.d/hm-session-vars.sh".source = "${pkgs.home-manager}/etc/profile.d/hm-session-vars.sh";
+   };
+
     # Hint Electron apps to use wayland 
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
@@ -224,9 +244,15 @@
        enable = true;
      };
     mtr.enable = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
+    gnupg = {
+      agent = {
+        enable = true;
+        enableSSHSupport = true;
+      };
+    };
+    ssh = {
+      enableAskPassword = true;
+      askPassword = "${pkgs.lxqt.lxqt-openssh-askpass}/bin/lxqt-openssh-askpass";
     };
   };
   

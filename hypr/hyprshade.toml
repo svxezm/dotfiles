@@ -1,3 +1,5 @@
+# /home/<username>/.config/hypr/hyprshade.toml
+
 [[shades]]
 name = "vibrance"
 default = true

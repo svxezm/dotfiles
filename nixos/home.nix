@@ -7,8 +7,6 @@
     stateVersion = "24.05";
 
     packages = with pkgs; [
-      pkgs.jdk8
-
       git
       gnupg
       alacritty
@@ -26,6 +24,9 @@
       speedtest-cli
       ranger
       lxqt.lxqt-openssh-askpass
+      mtr
+      ani-cli
+      mpv
     ];
 
     sessionVariables = {
@@ -35,6 +36,13 @@
     };
 
     file = {
+      ".gitconfig".text = ''
+        [user]
+	  name = monitzz
+	  email = "igorb.kuhl@gmail.com"
+	[core]
+	  sshCommand = ssh -i ~/.ssh/id_rsa
+      '';
       ".zshrc".text = ''
         if [ -e "${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh" ]; then
           source "${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh"
@@ -44,11 +52,18 @@
           eval `ssh-agent -s`
           ssh-add ~/.ssh/id_rsa
         fi
+
+	sleep 2
+
+	Hyprland
       '';
+      ".config/mpv/mpv.conf".text = ''
+        ao=pulse
+	ao=alsa
+	af=lavfi=[acompressor]
+      '';
+      # use the command `ssh-keyscan github.com` and paste all the response in the field below
       ".ssh/known_hosts".text = ''
-        github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
-	github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVsmerOBYfNqltV9/hWCqBywINIR+5dIg6JTJ72pcEpEjcYgXkE2YEFXV1JHnsKgbLWNlhScqb2UmyRkQyytRLtL+38TGxkxCflmO+5Z8CSSNY7GidjMIZ7Q4zMjA2n1nGrlTDkzwDCsw+wqFPGQA179cnfGWOWRVruj16z6XyvxvjJwbz0wQZ75XK5tKSb7FNyeIEs4TT4jk+S4dhPeAUC5y+bDYirYgM4GC7uEnztnZyaVWQ7B381AK4Qdrwt51ZqExKbQpTUNn+EjqoTwvqNj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S5hpQs+p1vN1/wsjk=
-	github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
       '';
       ".ssh/config".text = ''
         Host *
@@ -69,14 +84,21 @@
 	plugins = [ "git" "zoxide" "z" ];
       };
       shellAliases = {
+	vim = "nvim";
         nixrb = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
 	homerb = "home-manager switch --flake /etc/nixos#moni";
 	nixconf = "sudo nvim /etc/nixos/configuration.nix";
 	flakeconf = "sudo nvim /etc/nixos/flake.nix";
 	homeconf = "sudo nvim /etc/nixos/home.nix";
+	hyprconf = "nvim ~/.config/hypr/hyprland.conf";
 	genlist = "sudo nix-env --list-generations -p /nix/var/nix/profiles/system";
+	upgrade = "sudo nixos-rebuild switch --upgrade";
+	nixcg = "nix-collect-garbage";
+	cleangens = "sudo nix-collect-garbage -d";
+	copyfiles = "cp ~/.config/hypr/* ~/Downloads/dotfiles/hypr && cp /etc/nixos/* ~/Downloads/dotfiles/nixos";
       };
     };
+    home-manager.enable = true;
     ssh = {
       enable = true;
       extraConfig = ''

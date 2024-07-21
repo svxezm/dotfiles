@@ -10,12 +10,10 @@
       git
       gnupg
       alacritty
-      warp-terminal
       neovim
       zsh
       zsh-completions
       zsh-syntax-highlighting
-      dolphin
       fzf
       neofetch
       htop
@@ -27,6 +25,10 @@
       mtr
       ani-cli
       mpv
+      chatgpt-cli
+      tor-browser
+      vscode
+      krita
     ];
 
     sessionVariables = {
@@ -61,6 +63,7 @@
         ao=pulse
 	ao=alsa
 	af=lavfi=[acompressor]
+	aformat=sample_fmts=u8|s16:channel_layouts=stereo
       '';
       # use the command `ssh-keyscan github.com` and paste all the response in the field below
       ".ssh/known_hosts".text = ''
@@ -80,7 +83,7 @@
       dotDir = ".config/zsh";
       oh-my-zsh = {
         enable = true;
-	theme = "agnoster";
+	theme = "robbyrussell";
 	plugins = [ "git" "zoxide" "z" ];
       };
       shellAliases = {
@@ -95,7 +98,10 @@
 	upgrade = "sudo nixos-rebuild switch --upgrade";
 	nixcg = "nix-collect-garbage";
 	cleangens = "sudo nix-collect-garbage -d";
-	copyfiles = "cp ~/.config/hypr/* ~/Downloads/dotfiles/hypr && cp /etc/nixos/* ~/Downloads/dotfiles/nixos";
+	copynix = "cp /etc/nixos/* ~/Downloads/dotfiles/nixos";
+	copyhypr = "cp ~/.config/hypr/* ~/Downloads/dotfiles/hypr";
+	copywaybar = "cp ~/.config/waybar/* ~/Downloads/dotfiles/waybar";
+	copyfiles = "copynix && copyhypr && copywaybar";
       };
     };
     home-manager.enable = true;

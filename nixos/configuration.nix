@@ -31,9 +31,8 @@
     hostName = "nixos"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
-    useDHCP = false;
-    interfaces.enp3s0.useDHCP = true;
-    nameservers = [ "8.8.8.8" "8.8.4.4" ];
+    nameservers = [ "8.8.8.8" "1.1.1.1" ];
+    firewall.enable = false;
   };
 
   # Configure network proxy if necessary
@@ -64,7 +63,7 @@
 
   # Configure keymap in X11
   services = {
-    nscd.enable = false;
+    nscd.enable = true;
     libinput.enable = true;
     displayManager = {
       autoLogin = {
@@ -198,6 +197,7 @@
       wayland-protocols
       wayland-utils
       waybar
+
       swww
       meson
       dunst
@@ -228,6 +228,7 @@
       python313
       rustc
       cargo
+      fontconfig
    ];
 
    etc = {
@@ -258,7 +259,6 @@
       askPassword = "${pkgs.lxqt.lxqt-openssh-askpass}/bin/lxqt-openssh-askpass";
     };
   };
-  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   

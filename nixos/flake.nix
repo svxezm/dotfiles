@@ -1,12 +1,13 @@
 {
-  description = "Moni's configuration";
+  description = "Liz's configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
+    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, rose-pine-hyprcursor, ... } @ inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -24,7 +25,7 @@
     };
 
     homeConfigurations = { 
-      moni = home-manager.lib.homeManagerConfiguration {
+      liz = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [ ./home.nix ];
       };

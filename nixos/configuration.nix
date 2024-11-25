@@ -2,20 +2,32 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... } @args:
 
+let
+  inputs = args.inputs;
+in
 {
+#  lib.mkForce = lib.mkDefault true;
+
   imports =
     [ # Include the results of the hardware scan.
      ./hardware-configuration.nix
     ];
 
-/*  boot.loader.grub.device = "/dev/sda";
-  fileSystems."/" = {
-    device = "/dev/sda1";
+#  boot.loader.grub.device = "/dev/sda";
+  # use `blkid` and insert the uuid for the root partition
+  fileSystems."/" = lib.mkForce {
+    device = "/dev/disk/by-uuid/0396c9e7-8fda-4d10-8205-5a301a638fb3";
     fsType = "ext4";
   };
-*/
+
+  # use `blkid` and insert the uuid for the boot partition
+  fileSystems."/boot" = lib.mkForce {
+    device = "/dev/disk/by-uuid/8228-CD5C";
+    fsType = "vfat";
+    options = [ "defaults" ];
+  };
 
   # Bootloader.
   boot = {
@@ -68,7 +80,7 @@
     displayManager = {
       autoLogin = {
         enable = true;
-        user = "moni";
+        user = "liz";
       };
      sddm = {
        wayland.enable = true;
@@ -93,7 +105,7 @@
 	EndSection
       '';
     };
-    getty.autologinUser = "moni";
+    getty.autologinUser = "liz";
     dbus = {
       enable = true;
       packages = with pkgs; [
@@ -113,6 +125,20 @@
     };
     # Enable the OpenSSH daemon.
     openssh.enable = true;
+    httpd = {
+      enable = true;
+      virtualHosts = {
+	"localhost" = {
+	  documentRoot = "/srv/http";
+	  extraConfig = ''
+            <FilesMatch "\.php$">
+              SetHandler application/x-httpd-php
+            </FilesMatch>
+          '';
+	};
+      };
+      extraModules = [ "php" ];
+    };
   };
 
   hardware = {
@@ -146,10 +172,10 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.moni = {
+  users.users.liz = {
     isNormalUser = true;
-    home = "/home/moni";
-    description = "moni";
+    home = "/home/liz";
+    description = "liz";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
     packages = with pkgs; [];
@@ -182,6 +208,7 @@
 
   environment = {
     systemPackages = with pkgs; [
+      inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       home-manager
 
       hyprland
@@ -197,6 +224,7 @@
       wayland-protocols
       wayland-utils
       waybar
+      rose-pine-cursor
 
       swww
       meson
@@ -207,12 +235,11 @@
       slurp
       lxqt.lxqt-openssh-askpass
 
-      discord
-      whatsapp-for-linux
       steam
       steam-run
       bottles
       lutris
+      protonup-qt
       firefox
       spotify
 
@@ -228,6 +255,11 @@
       python313
       rustc
       cargo
+      php
+      phpExtensions.pdo_sqlite
+      phpExtensions.sqlite3
+      sqlite
+      apacheHttpd
       fontconfig
    ];
 
@@ -240,6 +272,10 @@
       NIXOS_OZONE_WL = "1";
     };
     shells = [ pkgs.zsh ];
+    variables = {
+      XCURSOR_SIZE = "24";
+      XCURSOR_THEME = "BreezeX-RosePine-Linux";
+    };
   };
 
   programs = {

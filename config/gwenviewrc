@@ -1,0 +1,37 @@
+[General]
+BackgroundColorMode=DocumentView::Dark
+LastTargetDir[$e]=file:$HOME/Pictures/Screenshots
+LastUsedVersion=210800
+SideBarPage=operations
+
+[MainWindow]
+1920x1080 screen: Window-Maximized=true
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAA6MAAAHOAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+
+[Recent Files]
+File1[$e]=$HOME/Documents/Full Stack Python/projetos/curso_ebac_frontend/images/github.svg
+File10[$e]=$HOME/Downloads/Untitled.png
+File2[$e]=$HOME/Documents/Full Stack Python/projetos/curso_ebac_frontend/images/instagram.svg
+File3[$e]=$HOME/Documents/Full Stack Python/projetos/curso_ebac_frontend/images/linkedin.svg
+File4[$e]=$HOME/Documents/workspace/portfolio/public/certificates/front-end.png
+File5[$e]=$HOME/Downloads/acm4002e.pdf
+File6[$e]=$HOME/Downloads/stuff/IMG_20240906_202212103.jpg
+File7[$e]=$HOME/Downloads/aconteceu.jpeg
+File8[$e]=$HOME/Downloads/bday.gif
+File9[$e]=$HOME/Downloads/menhera.gif
+Name1[$e]=github.svg
+Name10[$e]=Untitled.png
+Name2[$e]=instagram.svg
+Name3[$e]=linkedin.svg
+Name4[$e]=front-end.png
+Name5[$e]=acm4002e.pdf
+Name6[$e]=IMG_20240906_202212103.jpg
+Name7[$e]=aconteceu.jpeg
+Name8[$e]=bday.gif
+Name9[$e]=menhera.gif
+
+[SideBar]
+InformationSplitterSizes=216,259
+SideBarSplitterSizes=180,493

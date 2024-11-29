@@ -1,0 +1,7 @@
+[base]
+font = "JetBrains Mono Nerd Font"
+border_width = 2
+padding = 10
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+border = "#89b4fa"

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "coc-tslint-plugin": ">=1.2.0"
+  }
+}

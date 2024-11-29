@@ -1,0 +1,24 @@
+{
+    "suggest.noselect": false,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "csharp",
+        "sql",
+        "javascript",
+        "typescript",
+        "typescriptreact",
+        "json",
+        "javasciptreact",
+        "typescript.tsx",
+        "graphql"
+    ],
+    "languageserver": {
+        "csharp": {
+            "command": "csharp-ls",
+            "rootPatterns": [
+                "*.sln",
+                "git"
+            ],
+            "filetypes": ["cs", "csharp"]
+        }
+    }
+}

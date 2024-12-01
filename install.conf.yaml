@@ -1,0 +1,29 @@
+- defaults:
+    link:
+      create: true
+  link:
+    # zsh
+    ~/.zshrc: config/zsh/.zshrc
+
+    # tmux
+    ~/.tmux.conf: config/tmux/.tmux.conf
+
+    # git
+    ~/.gitconfig: config/git/.gitconfig
+
+    # hypr
+    ~/.config/hypr/hyprland.conf: config/hypr/hyprland.conf
+    ~/.config/hypr/hyprpaper.conf: config/hypr/hyprpaper.conf
+    ~/.config/hypr/hyprlock.conf: config/hypr/hyprlock.conf
+    ~/.config/hypr/hyprshade.toml: config/hypr/hyprshade.toml
+    ~/.config/hypr/startup.sh: config/hypr/startup.sh
+    ~/.config/hypr/gamemode.sh: config/hypr/gamemode.sh
+    
+    # alacritty
+    ~/.config/alacritty/alacritty.toml: config/alacritty/alacritty.toml
+
+    # waybar
+    ~/.config/waybar/config.jsonc: config/waybar/config.jsonc
+    ~/.config/waybar/style.css: config/waybar/style.css
+
+- clean: ['~/.config/hypr', '~/.zshrc']

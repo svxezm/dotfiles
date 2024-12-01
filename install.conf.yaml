@@ -26,4 +26,7 @@
     ~/.config/waybar/config.jsonc: config/waybar/config.jsonc
     ~/.config/waybar/style.css: config/waybar/style.css
 
+    # tofi
+    ~/.config/tofi/config: config/tofi/config
+
 - clean: ['~/.config/hypr', '~/.zshrc']

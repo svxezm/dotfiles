@@ -1,5 +1,8 @@
 #!/bin/sh
 
+export FONT="Fira Code Nerd Font"
+export MONO_FONT="Fira Code Nerd Font"
+
 export XCURSOR_THEME="BreezeX-RosePine-Linux"
 export XCURSOR_SIZE="24"
 

@@ -1,0 +1,9 @@
+[user]
+    name = svxezm
+    email = "igorb.kuhl@gmail.com"
+    signingkey = 19980C0A02DDC1CE
+[core]
+    sshCommand = ssh -i ~/.ssh/id_rsa
+[init]
+    defaultBranch = main
+

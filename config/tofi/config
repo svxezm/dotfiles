@@ -1,7 +1,8 @@
 [base]
-font = "JetBrains Mono Nerd Font"
+font = "Fira Code Nerd Font"
 border_width = 2
 padding = 10
-background = "#1e1e2e"
-foreground = "#cdd6f4"
-border = "#89b4fa"
+background-color = #1b0b13
+text-color = #f5ced7
+border-color = #fa71ba
+selection-color = #e8abbb

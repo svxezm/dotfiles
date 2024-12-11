@@ -9,12 +9,7 @@ export XCURSOR_SIZE="24"
 xrdb -merge <<< "Xcursor.theme: $XCURSOR_THEME"
 xrdb -merge <<< "Xcursor.size: $XCURSOR_SIZE"
 
-# Start Waybar
-waybar &
-
-firefox &
-
-tmux &
+alsactl --file ~/.config/asound.state restore
 
 # Start Tofi (for example, as an application launcher)
 # tofi-drun --drun-launch=true &

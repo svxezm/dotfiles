@@ -36,4 +36,10 @@
     ~/.config/neofetch/config.conf: config/neofetch/config.conf
     ~/.config/neofetch/images/image.png: config/neofetch/images/image.png
 
+    # ranger
+    ~/.config/ranger/rc.conf: config/ranger/rc.conf
+
+    # neovim
+    ~/.config/nvim: config/nvim
+
 - clean: ['~/.config/hypr', '~/.zshrc']

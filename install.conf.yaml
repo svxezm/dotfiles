@@ -42,4 +42,7 @@
     # neovim
     ~/.config/nvim: config/nvim
 
+    # boot message
+    ~/boot: config/boot
+
 - clean: ['~/.config/hypr', '~/.zshrc']

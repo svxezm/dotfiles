@@ -11,7 +11,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
 Plug 'CRAG666/code_runner.nvim'
-Plug ('nvim-telescope/telescope.nvim', { tag = '0.1.6' })
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
